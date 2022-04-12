@@ -20,11 +20,13 @@ for($i = 2; $i <= 100; $i++){
 
 
 <?php
- $resultado = 1;
 
 for($i = 1; $i <= 100; $i++){
-  $resultado = $i++;
+  $resultado = $i;
   echo "<p>$resultado</p>";
+  if($i == 60){
+      break;
+  }
 }
 
 ?>
