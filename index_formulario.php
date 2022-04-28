@@ -1,65 +1,59 @@
 <?php
-
-ini_set("display_errrors", 1);
-ini_set("display_starup_errors", 1);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+if($_POST){ /* es postback ? */
 
+    $usuario = $_REQUEST["txtUsuario"];
+    $clave = $_REQUEST["txtClave"];
 
-if ($_POST) {
-    $nombre = $_POST["txtNombre"];
-    $correo = $_POST["txtCorreo"];
-
-
-    if($nombre !="" && $clave != ""){
-     header("location: acceso_confirmado.php");
+    //Si usuario es distinto de vacio Y clave es distinto de vacio, entonces:
+    if($usuario != "" && $clave != ""){
+        header("Location: acceso-confirmado.php");
     } else {
-      $mensaje = "Valido para usuarios registrados.";
+        $mensaje = "Válido para usuarios registrados.";
     }
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
-
 <body>
-    <main class="container">
+    <div class="container">
         <div class="row">
-            <div class="col-12 py-5 text-center">
+            <div class="col-12 mt-5">
                 <h1>Formulario</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-            <?php if(isset($mensaje)){ ?>
+            <div class="col-12"> 
+                <?php if (isset($mensaje)): ?>
                     <div class="alert alert-danger" role="alert">
-                    <?php echo  $mensaje; ?>
+                        <?php echo $mensaje; ?>
                     </div>
-                <?php } ?>
-
+                <?php endif; ?>
                 <form method="POST" action="">
-                    <div>
-                        <form action="../../form-result.php" method="post" target="_blank">
-                            <form action="../../form-result.php" method="post" target="_blank">
-                                <p><label>Nombre de usuario: <input type="text" name="txtNombre" id="txtNombre"></label></p>
-                                <p><label>Contraseña: <input type="password" name="txtCorreo" id="txtCorreo"></label></p>
-                                <p><input type="submit" value="Enviar datos"></p>
-                            </form>
-                        </form>
+                    <div class="my-3">
+                        <label for="">Usuario: <input type="text" id="txtUsuario" name="txtUsuario" class="form-control"></label>
+                    </div>
+                    <div class="my-3">
+                        <label for="">Clave: <input type="password" id="txtClave" name="txtClave" class="form-control"></label>
+                    </div>
+                    <div class="my-3">
+                        <button class="btn btn-primary" type="submit">ENVIAR</button>
                     </div>
                 </form>
             </div>
         </div>
-    </main>
-</body>
 
+    </div>
+</body>
 </html>
+

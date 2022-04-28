@@ -51,19 +51,21 @@ function promediar($aNumeros)
 
                     <?php 
                     
-                    $promedioCursada = 0;
-                    $sumatoria = 0;
-                    foreach ($aAlumnos as $alumno):
-                     $promedio = promediar($alumno["notas"]);
-                     $sumatoria = $sumatoria + $promedio;
+                    $pos = 0;
+                    $sumPromedios = 0;
+                    foreach ($aAlumnos as $alumno): 
+                        $pos++;
+                        $promedio = promediar($alumno["aNotas"]);
+                        $sumPromedios += $promedio;
                     
                     ?>
 
                     <tr>
-                        <td><?php echo  $alumno["nombre"]?></td>
-                        <td><?php echo  $alumno["notas"] [0]?></td>
-                        <td><?php echo  $alumno["notas"] [1]?></td>
-                        <td><?php echo promediar($alumno["notas"]);?> </td>
+                    <td><?php echo $pos; ?></td>
+                            <td><?php echo $alumno["nombre"]; ?></td>
+                            <td><?php echo $alumno["aNotas"][0]; ?></td>
+                            <td><?php echo $alumno["aNotas"][1]; ?></td>
+                            <td><?php echo number_format($promedio, 2, ",", "."); ?></td>
                     </tr>
                     <?php endforeach;
                     
