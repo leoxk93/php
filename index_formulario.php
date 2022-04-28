@@ -10,7 +10,7 @@ if($_POST){ /* es postback ? */
 
     //Si usuario es distinto de vacio Y clave es distinto de vacio, entonces:
     if($usuario != "" && $clave != ""){
-        header("Location: acceso-confirmado.php");
+        header("Location: acceso_confirmado.php");
     } else {
         $mensaje = "Válido para usuarios registrados.";
     }
